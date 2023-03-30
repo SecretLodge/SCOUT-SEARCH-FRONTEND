@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root,
+.app {
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    @apply text-gray-80;
+    @apply bg-gray-10
+}
+
+input {
+    -webkit-appearance: none;
+    outline: none;
+}
