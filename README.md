@@ -1,2 +1,2 @@
 # SCOUT-SEARCH-FRONTEND
-scoutai.ru
+[scoutai.ru](https://scoutai.ru)
