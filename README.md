@@ -1,0 +1,2 @@
+# SCOUT-SEARCH-FRONTEND
+scoutai.ru
