@@ -1,9 +1,11 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import ButtonSend from "./ButtonSend";
 import InputRequest from "./InputRequest";
-import InputResponse from "./InputResponse";
+import InputChatResponse from "./InputChatResponse";
 import LinkDeveloper from "./LinkDeveloper";
-import axios from "axios";
+import chatRequest from "@/helpers/chatRequest";
+import searchRequest from "@/helpers/searchRequest";
+import InputSearchResponse from "./InputSearchResponse";
 
 const maxWidthSE = "se:max-w-[285px]";
 const maxWidthIE = "ie:max-w-[332px]";
@@ -13,26 +15,21 @@ const maxWidthSM = "sm:max-w-[625px]";
 const maxWidthMD = "md:max-w-[870px]";
 
 export default function SearchForm() {
-  const [response, setResponse] = useState("");
-  const [request, setRequest] = useState("");
+  const [searchResponse, setSearchResponse] = useState();
+  const [chatResponse, setChatResponse] = useState("");
+  const [userRequest, setUserRequest] = useState("");
   const [buttonPressed, setPressed] = useState(false);
 
-  const sendRequest = () => {
+  const sendRequest = async () => {
     if (buttonPressed) return;
     setPressed(true);
-
-    axios("https://scoutai.ru/chat/message", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        messages: [{ role: "user", content: request }],
-      },
-    }).then(({ data }) => {
-      setResponse(data.content);
-      setPressed(false);
-    });
+    const [{ content }, items] = await Promise.all([
+      chatRequest(userRequest),
+      searchRequest(userRequest),
+    ]);
+    setSearchResponse(items);
+    setChatResponse(content);
+    setPressed(false);
   };
 
   return (
@@ -41,10 +38,11 @@ export default function SearchForm() {
     >
       <LinkDeveloper />
       <div className="mt-[10px] flex">
-        <InputRequest sendRequest={sendRequest} setRequest={setRequest} />
+        <InputRequest sendRequest={sendRequest} setRequest={setUserRequest} />
         <ButtonSend sendRequest={sendRequest} buttonPressed={buttonPressed} />
       </div>
-      {response ? <InputResponse response={response} /> : null}
+      {chatResponse ? <InputChatResponse response={chatResponse} /> : ""}
+      {searchResponse ? <InputSearchResponse response={searchResponse} /> : ""}
     </div>
   );
 }
