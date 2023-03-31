@@ -17,21 +17,25 @@ export default function InputSearchResponse(props: { response: item[] }) {
             className={`${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[15px] bg-white py-[18px] px-[20px] shadow-gray-20`}
           >
             <div>
-              <a className="font-medium" href={item.link} target="_blank">
+              <a
+                className="font-medium text-blue-10 underline hover:text-yellow-20"
+                href={item.link}
+                target="_blank"
+              >
                 {item.title}
               </a>
             </div>
             <div>
               <a
-                className="text-[15px] font-medium text-blue-10 underline "
-                href={item.displayLink}
+                className="text-[15px] font-medium hover:underline"
+                href={item.link}
                 target="_blank"
               >
                 {item.displayLink}
               </a>
             </div>
             <div>
-              <p>{item.snippet}</p>
+              <p className="text-gray-60">{item.snippet}</p>
             </div>
           </div>
         );

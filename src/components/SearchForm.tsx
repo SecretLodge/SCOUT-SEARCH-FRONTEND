@@ -23,13 +23,14 @@ export default function SearchForm() {
   const sendRequest = async () => {
     if (buttonPressed) return;
     setPressed(true);
-    const [{ content }, items] = await Promise.all([
-      chatRequest(userRequest),
-      searchRequest(userRequest),
-    ]);
-    setSearchResponse(items);
-    setChatResponse(content);
-    setPressed(false);
+
+    searchRequest(userRequest).then((items) => {
+      setSearchResponse(items);
+    });
+    chatRequest(userRequest).then(({ content }) => {
+      setChatResponse(content);
+      setPressed(false);
+    });
   };
 
   return (
