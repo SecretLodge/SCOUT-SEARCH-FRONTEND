@@ -19,7 +19,7 @@ export default function InputSearchResponse(props: { response: item[] }) {
             <div>
               <a
                 className="font-medium text-blue-10 underline hover:text-yellow-20"
-                href={item.link}
+                href={item.url}
                 target="_blank"
               >
                 {item.title}
@@ -28,14 +28,14 @@ export default function InputSearchResponse(props: { response: item[] }) {
             <div>
               <a
                 className="text-[15px] font-medium hover:underline"
-                href={item.link}
+                href={item.url}
                 target="_blank"
               >
-                {item.displayLink}
+                {new URL(item.url).hostname}
               </a>
             </div>
             <div>
-              <p className="text-gray-60">{item.snippet}</p>
+              <p className="text-gray-60">{item.description}</p>
             </div>
           </div>
         );

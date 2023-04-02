@@ -1,11 +1,8 @@
 export default interface item {
     title: string;
-    link: string;
-    displayLink: string;
-    snippet: string;
-    pagemap: {
-      metatags: {
-        "og:image": string
-      }
+    description: string;
+    url: string;
+    favicons: {
+      high_res: string
     }
   }

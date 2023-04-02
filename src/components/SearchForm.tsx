@@ -24,8 +24,8 @@ export default function SearchForm() {
     if (buttonPressed) return;
     setPressed(true);
 
-    searchRequest(userRequest).then((items) => {
-      setSearchResponse(items);
+    searchRequest(userRequest).then((results) => {
+      setSearchResponse(results);
     });
     chatRequest(userRequest).then(({ content }) => {
       setChatResponse(content);
