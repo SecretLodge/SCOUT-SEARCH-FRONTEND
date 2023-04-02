@@ -16,7 +16,11 @@ export default function InputSearchResponse(props: { response: item[] }) {
           <div
             className={`${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[15px] bg-white py-[18px] px-[20px] shadow-gray-20`}
           >
-            <div>
+            <div className="flex items-center">
+              <img
+                src={item.favicons.high_res}
+                className="mr-[5px] flex h-[15px]"
+              />
               <a
                 className="font-medium text-blue-10 underline hover:text-yellow-20"
                 href={item.url}
