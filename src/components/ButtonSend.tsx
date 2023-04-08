@@ -1,5 +1,3 @@
-import { LegacyRef, MutableRefObject, useRef } from "react";
-
 const buttonSendSE = "se:rounded-[12px]";
 const buttonSendIE = "ie:rounded-[12px]";
 const buttonSendXS = "xs:rounded-[12px]";
@@ -15,7 +13,7 @@ export default function ButtonSend(props: {
     <button
       className={`${
         props.buttonPressed ? "cursor-not-allowed" : ""
-      } ml-[10px] ${buttonSendSE} ${buttonSendIE} ${buttonSendXS} ${buttonSendSS} ${buttonSendSM} ${buttonSendMD} bg-blue-10 px-[20px] duration-500 hover:shadow-blue-10`}
+      } ml-[10px] ${buttonSendSE} ${buttonSendIE} ${buttonSendXS} ${buttonSendSS} ${buttonSendSM} ${buttonSendMD} bg-blue-100 px-[20px] duration-500 hover:shadow-blue-10`}
       onClick={() => props.sendRequest()}
     >
       {props.buttonPressed ? (

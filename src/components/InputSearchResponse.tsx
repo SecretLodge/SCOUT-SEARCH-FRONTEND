@@ -22,7 +22,7 @@ export default function InputSearchResponse(props: { response: item[] }) {
                 className="mr-[5px] flex h-[15px]"
               />
               <a
-                className="font-medium text-blue-10 underline hover:text-yellow-20"
+                className="text-blue-10 font-medium text-blue-100 underline hover:text-yellow-20"
                 href={item.url}
                 target="_blank"
               >
@@ -31,7 +31,7 @@ export default function InputSearchResponse(props: { response: item[] }) {
             </div>
             <div>
               <a
-                className="text-[15px] font-medium hover:underline"
+                className="text-[15px] font-medium text-light-100 hover:underline"
                 href={item.url}
                 target="_blank"
               >
@@ -39,7 +39,7 @@ export default function InputSearchResponse(props: { response: item[] }) {
               </a>
             </div>
             <div>
-              <p className="text-gray-60">{item.description}</p>
+              <p className="text-light-100">{item.description}</p>
             </div>
           </div>
         );

@@ -1,11 +1,11 @@
 import { useState } from "react";
-import ButtonSend from "./ButtonSend";
-import InputRequest from "./InputRequest";
-import InputChatResponse from "./InputChatResponse";
-import LinkDeveloper from "./LinkDeveloper";
+import ButtonSend from "@/components/ButtonSend";
+import InputRequest from "@/components/InputRequest";
+import InputChatResponse from "@/components/InputChatResponse";
+import LinkDeveloper from "@/components/LinkDeveloper";
 import chatRequest from "@/helpers/chatRequest";
 import searchRequest from "@/helpers/searchRequest";
-import InputSearchResponse from "./InputSearchResponse";
+import InputSearchResponse from "@/components/InputSearchResponse";
 
 const maxWidthSE = "se:max-w-[285px]";
 const maxWidthIE = "ie:max-w-[332px]";

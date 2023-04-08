@@ -7,13 +7,34 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "gray-10": "#F2F2F2",
-        "gray-30": "#A7A7A7",
-        "gray-50": "#808080",
-        "gray-80": "#303030",
-        "blue-10": "#597DFE",
-        "yellow-10": "#FAB854",
-        "yellow-20": "#FB3D3D"
+        gray: {
+          10: '#F2F2F2',
+          30: '#A7A7A7',
+          50: '#808080',
+          80: '#303030'
+        },
+        blue: {
+          100: '#597DFE'
+        },
+        yellow: {
+          10: '#FAB854',
+          20: '#FB3D3D'
+        },
+        dark: {
+          100: '#505050',
+          200: '#3F3F3F',
+          300: '#1B1B1B',
+          400: '#000000' 
+        },
+        light: {
+          100: '#303030',
+          200: '#A7A7A7',
+          300: '#FFFFFF',
+          400: '#EDEDED'
+        },
+        both: {
+          100: '#393939'
+        }
       },
       boxShadow: {
         "gray-10": "0px -50px 40px rgba(0, 0, 0, 0.3)",

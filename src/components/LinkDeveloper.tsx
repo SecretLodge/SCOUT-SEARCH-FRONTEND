@@ -11,7 +11,7 @@ export default function LinkDeveloper() {
       className={`${linkMarginSE} ${linkMarginIE} ${linkMarginXS} ${linkMarginSS} ${linkMarginSM} ${linkMarginMD}`}
     >
       <div className="flex">
-        <p className=" text-gray-30">разработчик и дизайнер:</p>
+        <p className=" text-light-200">разработчик и дизайнер:</p>
         <a
           className="bg-gradient-to-r from-yellow-10 to-yellow-20 bg-clip-text font-medium text-transparent hover:animate-spin"
           href="https://t.me/notuchmeplz"

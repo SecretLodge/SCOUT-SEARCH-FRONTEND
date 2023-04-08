@@ -11,7 +11,7 @@ export default function InputRequest(props: {
 }) {
   return (
     <input
-      className={`${inputRequestSE} ${inputRequestIE} ${inputRequestXS} ${inputRequestSS} ${inputRequestSM} ${inputRequestMD} grow py-[18px] px-[20px] shadow-gray-20`}
+      className={`${inputRequestSE} ${inputRequestIE} ${inputRequestXS} ${inputRequestSS} ${inputRequestSM} ${inputRequestMD} grow py-[18px] px-[20px] text-light-100 shadow-gray-20`}
       placeholder="Введите ваш запрос"
       id="search"
       name="search"
