@@ -28,11 +28,7 @@ export default function ThemeToggle() {
     <button
       className={buttonSend}
       onClick={() => {
-        if (theme == "light") {
-          setTheme("dark");
-        } else {
-          setTheme("light");
-        }
+        setTheme(theme === "light" ? "dark" : "light");
       }}
     >
       <img
