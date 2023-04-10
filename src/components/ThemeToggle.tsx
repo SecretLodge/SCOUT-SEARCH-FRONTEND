@@ -17,11 +17,9 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     store.set("theme", theme);
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    theme === "dark"
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
   }, [theme]);
 
   return (
