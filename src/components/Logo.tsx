@@ -21,7 +21,7 @@ const headerMarginIE = "ie:mt-[45px]";
 const headerMarginXS = "xs:mt-[55px]";
 const headerMarginSS = "ss:mt-[99px]";
 const headerMarginSM = "sm:mt-[123px]";
-const headerMarginMD = "md:mt-[200px]";
+const headerMarginMD = "md:mt-[140px]";
 const headerMargin = `${headerMarginSE} ${headerMarginIE} ${headerMarginXS} ${headerMarginSS} ${headerMarginSM} ${headerMarginMD}`;
 
 export default function Logo() {

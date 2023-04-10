@@ -1,9 +1,9 @@
-import ButtonTheme from "@/components/ButtonTheme";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Menu() {
   return (
     <div className="flex justify-end">
-      <ButtonTheme />
+      <ThemeToggle />
     </div>
   );
 }

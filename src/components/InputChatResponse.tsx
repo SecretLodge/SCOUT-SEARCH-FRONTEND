@@ -9,7 +9,7 @@ export default function InputChatResponse(props: { response: string }) {
   return (
     <div>
       <div
-        className={`${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[15px] whitespace-pre-wrap bg-light-300 py-[18px] px-[20px] shadow-gray-20`}
+        className={`${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[15px] whitespace-pre-wrap bg-light-300 py-[18px] px-[20px] text-light-100 shadow-gray-20`}
       >
         <p>{props.response}</p>
       </div>

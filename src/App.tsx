@@ -1,9 +1,13 @@
-import Home from "@/pages/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Body from "./components/Body";
 
 function App() {
   return (
-    <div className="app">
-      <Home />
+    <div className="app bg-light-400">
+      <Header />
+      <Body />
+      <Footer />
     </div>
   );
 }

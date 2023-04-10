@@ -14,7 +14,7 @@ export default function InputSearchResponse(props: { response: item[] }) {
       {props.response.map((item: item) => {
         return (
           <div
-            className={`${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[15px] bg-white py-[18px] px-[20px] shadow-gray-20`}
+            className={`${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[15px] bg-light-300 py-[18px] px-[20px] shadow-gray-20`}
           >
             <div className="flex items-center">
               <img

@@ -9,12 +9,21 @@ body,
 #root,
 .app {
     width: 100%;
-    font-family: "Roboto", sans-serif;
-    @apply text-gray-80;
-    @apply bg-gray-10
+    height: 100%;
+
 }
 
-input {
-    -webkit-appearance: none;
-    outline: none;
+:root {
+    font-family: "Roboto", sans-serif;
+    --light-100: #303030;
+    --light-200: #A7A7A7;
+    --light-300: #FFFFFF;
+    --light-400: #EDEDED;
+}
+
+.dark {
+    --light-100: #505050;
+    --light-200: #3F3F3F;
+    --light-300: #1B1B1B;
+    --light-400: #000000;
 }
