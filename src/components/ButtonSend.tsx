@@ -13,8 +13,10 @@ export default function ButtonSend(props: {
     <button
       className={`${
         props.buttonPressed ? "cursor-not-allowed" : ""
-      } ml-[10px] ${buttonSendSE} ${buttonSendIE} ${buttonSendXS} ${buttonSendSS} ${buttonSendSM} ${buttonSendMD} bg-blue-100 px-[20px] duration-500 hover:shadow-blue-10`}
-      onClick={() => props.sendRequest()}
+      } ml-[10px] ${buttonSendSE} ${buttonSendIE} ${buttonSendXS} ${buttonSendSS} ${buttonSendSM} ${buttonSendMD} h-[60px] w-[60px] bg-blue-100 px-[20px] duration-500 hover:shadow-blue-10`}
+      onClick={() => {
+        props.sendRequest();
+      }}
     >
       {props.buttonPressed ? (
         <svg
