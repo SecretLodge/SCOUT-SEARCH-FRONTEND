@@ -5,13 +5,22 @@ const inputResponseSS = "ss:rounded-[12px]";
 const inputResponseSM = "sm:rounded-[9px]";
 const inputResponseMD = "md:rounded-[9px]";
 
-export default function InputChatResponse(props: { response: string }) {
+export default function InputChatResponse(props: {
+  response: string;
+  toggleChat: (value: boolean) => void;
+}) {
   return (
     <div>
       <div
-        className={`${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[15px] whitespace-pre-wrap bg-light-300 py-[18px] px-[20px] text-light-100 shadow-gray-20`}
+        className={`${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[15px] grid whitespace-pre-wrap bg-light-300 py-[18px] px-[20px] text-light-100 shadow-gray-20`}
       >
         <p>{props.response}</p>
+        <button
+          onClick={() => props.toggleChat(true)}
+          className="justify-self-end underline"
+        >
+          чат
+        </button>
       </div>
     </div>
   );

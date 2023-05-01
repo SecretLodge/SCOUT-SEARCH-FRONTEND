@@ -3,7 +3,7 @@ import ButtonSend from "@/components/ButtonSend";
 import InputRequest from "@/components/InputRequest";
 import InputChatResponse from "@/components/InputChatResponse";
 import LinkDeveloper from "@/components/LinkDeveloper";
-import chatRequest from "@/helpers/chatRequest";
+import { chatRequest, chatResponseModel } from "@/helpers/chatRequest";
 import searchRequest from "@/helpers/searchRequest";
 import InputSearchResponse from "@/components/InputSearchResponse";
 import scrollToElement from "@/helpers/scrollToElement";
@@ -15,10 +15,12 @@ const maxWidthSS = "ss:max-w-[581px]";
 const maxWidthSM = "sm:max-w-[625px]";
 const maxWidthMD = "md:max-w-[870px]";
 
-export default function SearchForm() {
+export default function SearchForm(props: {
+  toggleChat: (value: boolean) => void;
+}) {
   const [searchResponse, setSearchResponse] = useState();
   const [chatResponse, setChatResponse] = useState("");
-  const [userRequest, setUserRequest] = useState("");
+  const [userRequest, setUserRequest] = useState<chatResponseModel>(null!);
   const [buttonPressed, setPressed] = useState(false);
   const linkDeveloperRef = useRef<HTMLDivElement>(null!);
 
@@ -27,11 +29,11 @@ export default function SearchForm() {
     setPressed(true);
 
     try {
-      searchRequest(userRequest).then((results) => {
+      searchRequest(userRequest.content).then((results) => {
         setSearchResponse(results);
         scrollToElement(linkDeveloperRef);
       });
-      chatRequest(userRequest).then(({ content }) => {
+      chatRequest([userRequest]).then(({ content }) => {
         setChatResponse(content);
         setPressed(false);
       });
@@ -51,7 +53,14 @@ export default function SearchForm() {
         <InputRequest sendRequest={sendRequest} setRequest={setUserRequest} />
         <ButtonSend sendRequest={sendRequest} buttonPressed={buttonPressed} />
       </div>
-      {chatResponse ? <InputChatResponse response={chatResponse} /> : ""}
+      {chatResponse ? (
+        <InputChatResponse
+          toggleChat={props.toggleChat}
+          response={chatResponse}
+        />
+      ) : (
+        ""
+      )}
       {searchResponse ? <InputSearchResponse response={searchResponse} /> : ""}
     </div>
   );

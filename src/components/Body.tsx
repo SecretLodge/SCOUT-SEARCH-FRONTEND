@@ -4,7 +4,7 @@ import Description from "./Description";
 import SearchForm from "./SearchForm";
 import store from "store";
 
-export default function Body() {
+export default function Body(props: { toggleChat: (value: boolean) => void }) {
   const [pressed, setPressed] = useState(store.get("button")?.pressed);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function Body() {
   return (
     <>
       {pressed ? (
-        <SearchForm />
+        <SearchForm toggleChat={props.toggleChat} />
       ) : (
         <>
           <Description />

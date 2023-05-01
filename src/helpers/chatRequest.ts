@@ -1,15 +1,17 @@
 import axios from "axios";
 import baseUrl from "./baseUrl";
 
-export default async function chatResponse(request: string){
+export interface chatResponseModel { role: string, content: string }
+
+export async function chatRequest(request: chatResponseModel[]){
     const { data } = await axios(`${baseUrl}/chat/message/`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         data: {
-            messages: [{ role: "user", content: request }],
+            messages: request,
         }
     })
-    return data
+    return { role: 'assistant', content: data.content }
 }

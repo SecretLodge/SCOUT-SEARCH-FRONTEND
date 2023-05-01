@@ -1,4 +1,5 @@
 import changeHeight from "@/helpers/changeHeight";
+import { chatResponseModel } from "@/helpers/chatRequest";
 import { ChangeEvent } from "react";
 
 const inputRequestSE = "se:rounded-[12px]";
@@ -14,11 +15,14 @@ const textarea =
   "text-light-100 width-[100%] leading-[30px] resize-none border-none outline-none bg-light-300";
 
 export default function InputRequest(props: {
-  setRequest: (value: string) => void;
+  setRequest: (value: chatResponseModel) => void;
   sendRequest: () => void;
 }) {
   const getText = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    props.setRequest((event.target as unknown as HTMLInputElement).value);
+    props.setRequest({
+      role: "user",
+      content: (event.target as unknown as HTMLInputElement).value,
+    });
   };
 
   const sendOnEnter = (event: { key: string; preventDefault: () => void }) => {
