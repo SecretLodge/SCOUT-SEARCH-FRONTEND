@@ -16,9 +16,9 @@ export default function Body() {
 
   return (
     <>
+      <Logo />
       {pressed ? (
         <>
-          <Logo />
           <SearchForm />
         </>
       ) : (

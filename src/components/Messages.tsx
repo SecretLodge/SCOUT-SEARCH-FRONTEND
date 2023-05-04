@@ -6,7 +6,7 @@ const TextStyles = "whitespace-pre-wrap py-[15px] px-[20px] text-light-100";
 
 export default function Messages(props: { allMessages: chatResponseModel[] }) {
   return (
-    <>
+    <div>
       {props.allMessages.map((item, index) => (
         <section
           key={index}
@@ -20,6 +20,6 @@ export default function Messages(props: { allMessages: chatResponseModel[] }) {
           </div>
         </section>
       ))}
-    </>
+    </div>
   );
 }
