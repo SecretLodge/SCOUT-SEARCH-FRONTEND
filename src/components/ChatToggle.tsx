@@ -9,13 +9,14 @@ const buttonSend = `${buttonSendSE} ${buttonSendIE} ${buttonSendXS} ${buttonSend
 
 export default function ChatToggle(props: {
   theme: string;
+  isChat: string;
   toggleChat: () => void;
 }) {
   return (
     <button className={buttonSend} onClick={() => props.toggleChat()}>
       <img
         className="h-[60px] p-[18px]"
-        src={`/${props.theme}_robot.png`}
+        src={`/${props.theme}_${props.isChat}.png`}
         alt="Change Theme"
       />
     </button>

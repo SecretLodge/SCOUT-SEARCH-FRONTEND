@@ -5,41 +5,42 @@ import InputRequest from "./InputRequest";
 import LinkDeveloper from "./LinkDeveloper";
 import { chatResponseModel } from "@/helpers/chatRequest";
 import scrollToElement from "@/helpers/scrollToElement";
-
-const inputResponseSE = "se:rounded-[12px]";
-const inputResponseIE = "ie:rounded-[12px]";
-const inputResponseXS = "xs:rounded-[12px]";
-const inputResponseSS = "ss:rounded-[12px]";
-const inputResponseSM = "sm:rounded-[9px]";
-const inputResponseMD = "md:rounded-[9px]";
-
-const inputResponse = `${inputResponseSE} ${inputResponseIE} ${inputResponseXS} ${inputResponseSS} ${inputResponseSM} ${inputResponseMD} mt-[10px] max-w-[500px] bg-light-300`;
+import store from "store";
+import Messages from "./Messages";
 
 const InputStyles =
   "fixed bottom-[35px] right-[50%] flex w-full max-w-[1000px] translate-x-[50%] px-[10px]";
 const LinkStyles =
   "fixed bottom-[10px] right-[50%] flex translate-x-[50%] px-[10px] min-w-[250px]";
 const MessagesStyles = "mx-auto flex max-w-[1000px] flex-col px-[10px]";
-const TextStyles = "whitespace-pre-wrap py-[15px] px-[20px] text-light-100";
 
 export default function Chat() {
-  const [allMessages, setMessages] = useState<Array<chatResponseModel>>([]);
+  const [allMessages, setMessages] = useState<Array<chatResponseModel>>(
+    store.get("messages") ?? store.set("messages", [])
+  );
   const [userRequest, setUserRequest] = useState<chatResponseModel>(null!);
   const [buttonPressed, setPressed] = useState(false);
   const scrollElement = useRef<HTMLDivElement>(null!);
+
+  const addMessages = (messages: chatResponseModel[]) => {
+    setMessages([...allMessages, ...messages]);
+  };
+
+  useEffect(() => {
+    store.set("messages", allMessages);
+  }, [allMessages]);
 
   const sendRequest = async () => {
     if (buttonPressed) return;
     setPressed(true);
 
-    setMessages([...allMessages, userRequest]);
+    addMessages([userRequest]);
     chatRequest([...allMessages, userRequest])
       .then((response) => {
-        setMessages([...allMessages, userRequest, response]);
+        addMessages([userRequest, response]);
       })
       .catch(() => {
-        setMessages([
-          ...allMessages,
+        addMessages([
           userRequest,
           {
             role: "assistent",
@@ -58,19 +59,7 @@ export default function Chat() {
     <div>
       <div className={MessagesStyles}>
         <div className="mt-[20px]">
-          {allMessages.map((item, index) => (
-            <section
-              key={index}
-              className={`flex ${item.role === "user" && "flex-row-reverse"}`}
-            >
-              <div className="mx-[9px] mt-[25px]">
-                {item.role === "user" ? "😄" : "🤖"}
-              </div>
-              <div className={inputResponse}>
-                <p className={TextStyles}>{item.content}</p>
-              </div>
-            </section>
-          ))}
+          <Messages allMessages={allMessages} />
         </div>
       </div>
       <div className="flex">

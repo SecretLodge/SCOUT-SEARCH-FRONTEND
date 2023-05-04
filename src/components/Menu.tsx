@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import store from "store";
 import ChatToggle from "./ChatToggle";
 
-export default function Menu(props: { toggleChat: () => void }) {
+export default function Menu(props: {
+  toggleChat: () => void;
+  isChat: string;
+}) {
   const [theme, setTheme] = useState<string>(
     store.get("theme") ?? store.set("theme", "light")
   );
@@ -22,7 +25,11 @@ export default function Menu(props: { toggleChat: () => void }) {
   return (
     <div className="flex justify-end">
       <ThemeToggle theme={theme} handleTheme={handleTheme} />
-      <ChatToggle theme={theme} toggleChat={props.toggleChat} />
+      <ChatToggle
+        theme={theme}
+        isChat={props.isChat}
+        toggleChat={props.toggleChat}
+      />
     </div>
   );
 }
