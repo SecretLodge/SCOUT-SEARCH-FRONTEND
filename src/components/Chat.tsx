@@ -32,25 +32,26 @@ export default function Chat() {
     if (buttonPressed) return;
     setPressed(true);
 
-    try {
-      setMessages([...allMessages, userRequest]);
-      chatRequest([...allMessages, userRequest]).then((response) => {
+    setMessages([...allMessages, userRequest]);
+    chatRequest([...allMessages, userRequest])
+      .then((response) => {
         setMessages([...allMessages, userRequest, response]);
+      })
+      .catch(() => {
+        setMessages([
+          ...allMessages,
+          userRequest,
+          {
+            role: "assistent",
+            content:
+              "Извините, что то пошло не так. Попробуйте задать этот вопрос ещё раз 🐨",
+          },
+        ]);
+      })
+      .finally(() => {
         setPressed(false);
         scrollToElement(scrollElement);
       });
-    } catch {
-      setMessages([
-        ...allMessages,
-        {
-          role: "assistent",
-          content:
-            "Извините, что то пошло не так. Попробуйте задать этот вопрос ещё раз 🐨",
-        },
-      ]);
-      setPressed(false);
-      scrollToElement(scrollElement);
-    }
   };
 
   return (

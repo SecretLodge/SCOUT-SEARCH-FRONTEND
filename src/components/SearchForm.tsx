@@ -26,21 +26,25 @@ export default function SearchForm() {
     if (buttonPressed) return;
     setPressed(true);
 
-    try {
-      searchRequest(userRequest.content).then((results) => {
+    searchRequest(userRequest.content)
+      .then((results) => {
         setSearchResponse(results);
+      })
+      .finally(() => {
         scrollToElement(linkDeveloperRef);
       });
-      chatRequest([userRequest]).then(({ content }) => {
+    chatRequest([userRequest])
+      .then(({ content }) => {
         setChatResponse(content);
+      })
+      .catch(() => {
+        setChatResponse(
+          "Произошла ошибочка, попробуйте ещё раз. Если не получится, то напишите разработчику. \nCпасибо за понимание 🍉"
+        );
+      })
+      .finally(() => {
         setPressed(false);
       });
-    } catch {
-      setChatResponse(
-        "Произошла ошибочка, попробуйте ещё раз. Если не получится, то напишите разработчику. \nCпасибо за понимание 🍉"
-      );
-      setPressed(false);
-    }
   };
 
   return (
