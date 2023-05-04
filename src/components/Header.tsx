@@ -1,11 +1,10 @@
 import Logo from "./Logo";
 import Menu from "./Menu";
 
-export default function Header() {
+export default function Header(props: { toggleChat: () => void }) {
   return (
     <>
-      <Menu />
-      <Logo />
+      <Menu toggleChat={props.toggleChat} />
     </>
   );
 }

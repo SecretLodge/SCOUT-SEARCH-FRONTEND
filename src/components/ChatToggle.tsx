@@ -7,15 +7,15 @@ const buttonSendMD = "md:rounded-[9px]";
 const buttonSendOther = "mr-[16px] mt-[16px] bg-light-300 shadow-gray-20";
 const buttonSend = `${buttonSendSE} ${buttonSendIE} ${buttonSendXS} ${buttonSendSS} ${buttonSendSM} ${buttonSendMD} ${buttonSendOther}`;
 
-export default function ThemeToggle(props: {
+export default function ChatToggle(props: {
   theme: string;
-  handleTheme: () => void;
+  toggleChat: () => void;
 }) {
   return (
-    <button className={buttonSend} onClick={() => props.handleTheme()}>
+    <button className={buttonSend} onClick={() => props.toggleChat()}>
       <img
         className="h-[60px] p-[18px]"
-        src={`/${props.theme}.png`}
+        src={`/${props.theme}_robot.png`}
         alt="Change Theme"
       />
     </button>

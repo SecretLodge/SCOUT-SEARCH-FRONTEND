@@ -7,20 +7,20 @@ import Chat from "./components/Chat";
 function App() {
   const [isChat, setChat] = useState(false);
 
-  const toggleChat = (value: boolean) => {
-    setChat(value);
+  const toggleChat = () => {
+    setChat(isChat ? false : true);
   };
 
   return (
     <div className="app bg-light-400">
+      <Header toggleChat={toggleChat} />
       {isChat ? (
         <div>
           <Chat />
         </div>
       ) : (
         <div>
-          <Header />
-          <Body toggleChat={toggleChat} />
+          <Body />
           <Footer />
         </div>
       )}

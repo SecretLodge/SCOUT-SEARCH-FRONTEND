@@ -3,8 +3,9 @@ import ButtonHome from "./ButtonHome";
 import Description from "./Description";
 import SearchForm from "./SearchForm";
 import store from "store";
+import Logo from "./Logo";
 
-export default function Body(props: { toggleChat: (value: boolean) => void }) {
+export default function Body() {
   const [pressed, setPressed] = useState(store.get("button")?.pressed);
 
   useEffect(() => {
@@ -16,7 +17,10 @@ export default function Body(props: { toggleChat: (value: boolean) => void }) {
   return (
     <>
       {pressed ? (
-        <SearchForm toggleChat={props.toggleChat} />
+        <>
+          <Logo />
+          <SearchForm />
+        </>
       ) : (
         <>
           <Description />

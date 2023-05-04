@@ -15,9 +15,7 @@ const maxWidthSS = "ss:max-w-[581px]";
 const maxWidthSM = "sm:max-w-[625px]";
 const maxWidthMD = "md:max-w-[870px]";
 
-export default function SearchForm(props: {
-  toggleChat: (value: boolean) => void;
-}) {
+export default function SearchForm() {
   const [searchResponse, setSearchResponse] = useState();
   const [chatResponse, setChatResponse] = useState("");
   const [userRequest, setUserRequest] = useState<chatResponseModel>(null!);
@@ -41,6 +39,7 @@ export default function SearchForm(props: {
       setChatResponse(
         "Произошла ошибочка, попробуйте ещё раз. Если не получится, то напишите разработчику. \nCпасибо за понимание 🍉"
       );
+      setPressed(false);
     }
   };
 
@@ -53,14 +52,7 @@ export default function SearchForm(props: {
         <InputRequest sendRequest={sendRequest} setRequest={setUserRequest} />
         <ButtonSend sendRequest={sendRequest} buttonPressed={buttonPressed} />
       </div>
-      {chatResponse ? (
-        <InputChatResponse
-          toggleChat={props.toggleChat}
-          response={chatResponse}
-        />
-      ) : (
-        ""
-      )}
+      {chatResponse ? <InputChatResponse response={chatResponse} /> : ""}
       {searchResponse ? <InputSearchResponse response={searchResponse} /> : ""}
     </div>
   );
